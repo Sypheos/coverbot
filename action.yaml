@@ -10,5 +10,7 @@ runs:
   steps:
     - name: Generating coverage
       if: ${{ github.action.pullrequest }} != null
-      run: go run ${{ github.action_path }} --coverage-file ${{ inputs.cover-file }} --repo ${{ github.repository }} --issue ${{ github.action.pullrequest.issue }}
+      run: |
+        echo {{ github.action.pullrequest }}
+        go run ${{ github.action_path }} . --coverage-file ${{ inputs.cover-file }} --repo ${{ github.repository }} --issue ${{ github.action.pullrequest.issue }}
       shell: bash
