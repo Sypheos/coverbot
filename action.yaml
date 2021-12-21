@@ -13,5 +13,6 @@ runs:
       run: |
         echo ${{ github.action.pullrequest }}
         ls ${{ github.action_path }}
-        go run ${{ github.action_path }} . --coverage-file ${{ inputs.cover-file }} --repo ${{ github.repository }} --issue 1
+        go build ${{ github.action_path }} 
+        ./coverbot . --coverage-file ${{ inputs.cover-file }} --repo ${{ github.repository }} --issue 1
       shell: bash
