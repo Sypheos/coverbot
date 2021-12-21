@@ -9,7 +9,7 @@ runs:
   using: "composite"
   steps:
     - name: Generating coverage
-      if: ${{ github.event.pull_request.number  > 0 }}
+      if: ${{ github.event.pull_request.number > 0 }}
       run: |
         echo ${{ github.event.pull_request.number }}
         cat ${{ github.event_path }}
