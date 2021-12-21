@@ -25,6 +25,6 @@ jobs:
       run: go test -coverprofile cover.out -v ./...
 
     - name: Coverage
-      uses: sypheos/coverbot@v0.0.3
+      uses: sypheos/coverbot@v0.0.5
       with:
         cover-file: cover.out
