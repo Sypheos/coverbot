@@ -9,10 +9,10 @@ runs:
   using: "composite"
   steps:
     - name: Generating coverage
-      if: ${{ github.event.pullrequest }} != null
+      if: ${{ github.event.pull_request.number  > 0 }}
       run: |
         echo ${{ github.event.pull_request.number }}
         cat ${{ github.event_path }}
         cd ${{ github.action_path }} 
-        go run . --coverage-file ${{ inputs.cover-file }} --repo ${{ github.repository }} --issue 1
+        go run . --coverage-file ${{ inputs.cover-file }} --repo ${{ github.repository }} --issue ${{ github.event.pull_request.number }}
       shell: bash
