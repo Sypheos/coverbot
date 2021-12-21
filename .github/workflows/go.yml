@@ -22,4 +22,9 @@ jobs:
       run: go build -v ./...
 
     - name: Test
-      run: go test -v ./...
+      run: go test -coverprofile cover.out -v ./...
+
+    - name: Coverage
+      uses: sypheos/coverbot@v0.0.3
+      with:
+        cover-file: cover.out
