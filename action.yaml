@@ -11,8 +11,7 @@ runs:
     - name: Generating coverage
       if: ${{ github.action.pullrequest }} != null
       run: |
-        echo ${{ github.action.pullrequest }}
+        echo ${{ github.action.pullrequest.number }}
         cd ${{ github.action_path }} 
-        ls
         go run . --coverage-file ${{ inputs.cover-file }} --repo ${{ github.repository }} --issue 1
       shell: bash

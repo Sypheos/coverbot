@@ -25,6 +25,6 @@ jobs:
       run: go test -coverprofile cover.out -v ./...
 
     - name: Coverage
-      uses: sypheos/coverbot@v0.0.8
+      uses: sypheos/coverbot@v0.0.9
       with:
-        cover-file: cover.out
+        cover-file: ${{ github.workspace }}/cover.out
