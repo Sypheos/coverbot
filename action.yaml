@@ -12,7 +12,7 @@ runs:
       if: ${{ github.action.pullrequest }} != null
       run: |
         echo ${{ github.action.pullrequest }}
-        ls ${{ github.action_path }}
-        go build ${{ github.action_path }} 
-        ./coverbot . --coverage-file ${{ inputs.cover-file }} --repo ${{ github.repository }} --issue 1
+        cd ${{ github.action_path }} 
+        ls
+        go run . --coverage-file ${{ inputs.cover-file }} --repo ${{ github.repository }} --issue 1
       shell: bash
