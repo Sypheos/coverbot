@@ -12,5 +12,6 @@ runs:
       if: ${{ github.action.pullrequest }} != null
       run: |
         echo ${{ github.action.pullrequest }}
+        ls ${{ github.action_path }}
         go run ${{ github.action_path }} . --coverage-file ${{ inputs.cover-file }} --repo ${{ github.repository }} --issue 1
       shell: bash
