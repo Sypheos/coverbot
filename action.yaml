@@ -1,0 +1,18 @@
+name: 'Coverbot'
+description: 'Add coverage info to a PR'
+inputs:
+  cover-file:  # id of input
+    description: 'input cover file'
+    required: false
+    default: 'cover.out'
+outputs:
+  random-number:
+    description: "Random number"
+    value: ${{ steps.random-number-generator.outputs.random-id }}
+runs:
+  using: "composite"
+  steps:
+    - name: Generating coverage
+      if: ${{ github.action.pullrequest }} != null
+      run: go run ${{ github.action_path }}/coverbot.go --coverage-file ${{ inputs.cover-file }} --repo ${{ github.repository }} --issue ${{ github.action.pullrequest.issue }}
+      shell: bash
